@@ -45,7 +45,7 @@ nextApp
     server.use(
       "/api",
       createProxyMiddleware({
-        target: process.env.BACKEND_URI,
+        target: "/api",
         changeOrigin: true,
         // pathRewrite: {
         //   "^/api/api": "/api", // rewrite path
