@@ -28,24 +28,30 @@ function createDoc(base, docs, is_interact) {
   }, {});
 }
 function createAPI(base) {
-  return ["ROUTING"].reduce((acc, type) => {
+  return ["LOTTERY"].reduce((acc, type) => {
     acc[type] = createDoc(`${base}_${type}`, services);
     return acc;
   }, {});
 }
 function createInteract(base) {
-  return ["ROUTING"].reduce((acc, type) => {
+  return ["LOTTERY"].reduce((acc, type) => {
     acc[type] = createDoc(`${base}_${type}`, interacts, true);
     return acc;
   }, {});
 }
 
 const API = createAPI("API");
-const ROUTING_REQUEST = "ROUTING_REQUEST";
 
 const INTERACT = createInteract("INTERACT");
 const INTERACT_REQUEST = "INTERACT_REQUEST";
-const ROUTING_REQUEST_INTERVAL = "ROUTING_REQUEST_INTERVAL";
-const QUEUE_REQUEST = "QUEUE_REQUEST";
+const LOTTERY_REQUEST = "LOTTERY_REQUEST";
+const LOTTERY_REQUEST_INTERVAL = "LOTTERY_REQUEST_INTERVAL";
 
-export { API, COMPONENT, INTERACT_REQUEST, INTERACT };
+export {
+  API,
+  COMPONENT,
+  INTERACT_REQUEST,
+  INTERACT,
+  LOTTERY_REQUEST,
+  LOTTERY_REQUEST_INTERVAL,
+};

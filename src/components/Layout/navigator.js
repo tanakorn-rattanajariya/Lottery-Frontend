@@ -35,7 +35,8 @@ function WebLayout({ router, fullscreen, t, ...props }) {
           mode="horizontal"
           defaultSelectedKeys={[path]}
         >
-          <Menu.Item key="/dashboard">Home</Menu.Item>
+          <Menu.Item key="/home">เลขเด็ด</Menu.Item>
+          <Menu.Item key="/search">ตรวจหวย</Menu.Item>
         </Menu>
       </Header>
       <Layout
