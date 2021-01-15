@@ -11,10 +11,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 5,
   },
-  options: {
-    distDir: "./src/.next",
-    dist: "./src/.next",
-  },
+  distDir: "src",
   compress: true,
   publicRuntimeConfig: {
     localeSubpaths:
