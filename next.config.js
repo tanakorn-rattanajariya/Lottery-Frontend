@@ -11,7 +11,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 5,
   },
-  distDir: "/src",
+  distDir: "./src",
   compress: true,
   publicRuntimeConfig: {
     localeSubpaths:
