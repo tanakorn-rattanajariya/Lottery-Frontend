@@ -25,13 +25,13 @@
             {
                 "root": ["./"],
                 "alias": {
-                    "pages": "./src/pages",
-                    "components": "./src/components",
-                    "actions": "./src/redux/actions",
-                    "images": "./src/public/images",
-                    "Colors": "./src/public/colors/colors.js",
-                    "logics": "./src/logics",
-                    "styles": "./src/styles"
+                    "pages": "./pages",
+                    "components": "./components",
+                    "actions": "./redux/actions",
+                    "images": "./public/images",
+                    "Colors": "./public/colors/colors.js",
+                    "logics": "./logics",
+                    "styles": "./styles"
                 }
             }
         ],
