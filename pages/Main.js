@@ -2,7 +2,7 @@ import stylesheet from "styles/index.less";
 import { connect } from "react-redux";
 import Head from "next/head";
 import { Row, Col, message } from "antd";
-import Navigator from "components/Layout/navigator";
+import { Navigator } from "components";
 const mapStateToProps = (state /*, ownProps*/) => {
   return {
     reducer: {

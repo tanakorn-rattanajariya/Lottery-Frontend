@@ -1,3 +1,3 @@
-import Navigator from "./Layout/navigator.js";
+import Navigator from "./Layout/navigator";
 
 export { Navigator };
