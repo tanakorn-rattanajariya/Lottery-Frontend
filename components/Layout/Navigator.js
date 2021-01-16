@@ -17,7 +17,7 @@ import { ApiFilled } from "@ant-design/icons";
 import * as React from "react";
 import getConfig from "next/config";
 const { Content, Sider, Header } = Layout;
-function WebLayout({ router, fullscreen, t, ...props }) {
+function Navigator({ router, fullscreen, t, ...props }) {
   const path = router.pathname;
   const _on_click_menu = (e) => {
     Router.push(e.key);
@@ -69,4 +69,4 @@ function WebLayout({ router, fullscreen, t, ...props }) {
     </Layout>
   );
 }
-export default withRouter(WebLayout);
+export default withRouter(Navigator);
