@@ -8,7 +8,7 @@ const node_project = process.env.NODE_PROJECT
 require("dotenv").config({ path: `./.env/.env.${node_env}.${node_project}` });
 const webpack = require("webpack");
 module.exports = {
-  distDir: "../.next",
+  distDir: "../",
   parserOptions: {
     ecmaVersion: 5,
   },
