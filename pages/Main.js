@@ -8,6 +8,7 @@ const mapStateToProps = (state /*, ownProps*/) => {
     reducer: {
       component: state.component,
       interact: state.interact,
+      lottery: state.lottery,
     },
   };
 };
@@ -58,7 +59,6 @@ function Main(props) {
               return React.cloneElement(child, {
                 action: props.action,
                 reducer: props.reducer,
-                t: props.t,
               });
             })}
           </div>
