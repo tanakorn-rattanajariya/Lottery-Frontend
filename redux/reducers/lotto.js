@@ -6,6 +6,7 @@ const initialState = {
     top2: parseInt(Math.random() * 100),
     top3: parseInt(Math.random() * 100),
     top4: parseInt(Math.random() * 100),
+    top5: parseInt(Math.random() * 100),
   },
   resultList: [
     {

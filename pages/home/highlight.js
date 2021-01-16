@@ -26,7 +26,7 @@ export default function HomeHighlight(props) {
 }
 function AIRecommendComponent(props) {
   const { reducer } = props;
-  const { top2, top3, top4 } = reducer.lottery.dashboard;
+  const { top2, top3, top4,top5 } = reducer.lottery.dashboard;
   return (
     <div>
       <span style={styles.aiText} strong>
@@ -37,6 +37,9 @@ function AIRecommendComponent(props) {
       </span>
       <span style={styles.aiText} strong>
         {top4}
+      </span>
+      <span style={styles.aiText} strong>
+        {top5}
       </span>
     </div>
   );

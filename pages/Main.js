@@ -8,7 +8,7 @@ const mapStateToProps = (state /*, ownProps*/) => {
     reducer: {
       component: state.component,
       interact: state.interact,
-      lottery: state.lottery,
+      lotto: state.lotto,
     },
   };
 };
@@ -17,6 +17,8 @@ const mapDispatchToProps = (dispatch) => ({
   action: {
     interact: (api, doc, item) =>
       dispatch(actions.interact.call(api, doc, item)),
+    lotto: (api, doc, item, id, props) =>
+      dispatch(actions.lotto.call(api, doc, item, id, props)),
   },
 });
 function errorMessage(error) {

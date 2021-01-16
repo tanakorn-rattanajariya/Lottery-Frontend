@@ -1,6 +1,6 @@
 import interact from "./interact";
-import lottery from "./lottery";
+import lotto from "./lotto";
 export default {
   interact,
-  lottery,
+  lotto,
 };
