@@ -8,7 +8,6 @@ const styles = {
   },
 };
 export default function HomeHighlight(props) {
-  const test = 0;
   return (
     <>
       <Card
