@@ -37,6 +37,7 @@ function Navigator({ router, fullscreen, t, ...props }) {
         >
           <Menu.Item key="/">เลขเด็ด</Menu.Item>
           <Menu.Item key="/search">ตรวจหวย</Menu.Item>
+          <Menu.Item key="/result">ผลสลาก</Menu.Item>
         </Menu>
       </Header>
       <Layout
