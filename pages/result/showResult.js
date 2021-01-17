@@ -26,11 +26,12 @@ const styles = {
 };
 
 export default function ShowResult(props) {
-  var firstTier = (props?.reducer.lotto.resultList || []).filter(
+  console.log(props);
+  var firstTier = (props?.reducer?.lotto.resultList || []).filter(
     (v) => v.tier === 1
   );
   var otherTier = {};
-  (props?.reducer.lotto.resultList || [])
+  (props?.reducer?.lotto.resultList || [])
     .filter((v) => v.tier != 1)
     .map((v) => {
       otherTier = {
@@ -43,8 +44,8 @@ export default function ShowResult(props) {
       };
     });
   return (
-    <Card>
-      <Row style={{ textAlign: "center" }} gutter="16px">
+    <Card style={{margin: "12px 0"}}>
+      <Row style={{ textAlign: "center" }} gutter="16">
         <FirstTier firstTierList={firstTier} />
       </Row>
       <OtherTier otherTier={otherTier} />
@@ -82,7 +83,7 @@ function OtherTier({ otherTier }) {
       <Row
         key={v}
         style={{ textAlign: "center", fontSize: 16 }}
-        gutter="16px"
+        gutter="16"
         justify="center"
       >
         <Divider />

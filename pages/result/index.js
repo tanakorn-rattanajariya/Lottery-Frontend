@@ -1,11 +1,15 @@
 import React from "react";
 import Main from "../Main";
 import ShowResult from "./showResult";
+import Period from "./period";
+
 export default function ResultPage(props) {
   return (
     <Main>
       <ComponentDidMount />
+      <Period {...props} />
       <ShowResult {...props} />
+      
     </Main>
   );
 }
