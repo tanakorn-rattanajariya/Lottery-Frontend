@@ -1,4 +1,4 @@
-import {Row,Col,Card,Typography,Divider,List} from "antd";
+import {Row,Col,Card,Typography,Divider} from "antd";
 const { Title, Text } = Typography;
 
 const styles = {
@@ -72,7 +72,6 @@ function OtherTier(props){
                                     <Col key={e.number} span={4}>{e.number}</Col>
                                 )
                             })}
-                            
                         </Row>
                     );
             })}
