@@ -25,28 +25,30 @@ const styles = {
   },
 };
 
-export default function ShowResult(props) {
-  console.log(props);
-  var firstPrize = (props?.reducer?.lotto.result?.prizes || []).filter((v) =>
-    v.id === "prizeFirst").reduce((acc, v) =>{
-      return {...acc,[v.id]:v}
-    },{});
+export default function ResultShowResult(props) {
+  var firstPrize = (props?.reducer?.lotto.result?.prizes || [])
+    .filter((v) => v.id === "prizeFirst")
+    .reduce((acc, v) => {
+      return { ...acc, [v.id]: v };
+    }, {});
   var otherTier = (props?.reducer?.lotto.result?.prizes || [])
-  .filter((v) =>v.id !== "prizeFirst")
-  .sort((a,b) => a.amount-b.amount)
-  .reduce((acc,v)=>{
-    return {
-      ...acc,
-      [v.id]: v
-    };
-  },{});
-  var runningNumbers = (props?.reducer.lotto.result?.runningNumbers||[]).reduce((acc,v)=>{
-    return{...acc||{},[v.id]:{...v}}
-  },{})
+    .filter((v) => v.id !== "prizeFirst")
+    .sort((a, b) => a.amount - b.amount)
+    .reduce((acc, v) => {
+      return {
+        ...acc,
+        [v.id]: v,
+      };
+    }, {});
+  var runningNumbers = (
+    props?.reducer.lotto.result?.runningNumbers || []
+  ).reduce((acc, v) => {
+    return { ...(acc || {}), [v.id]: { ...v } };
+  }, {});
   return (
-    <Card style={{marginBottom:"12px"}}>
+    <Card style={{ marginBottom: "12px" }}>
       <Row style={{ textAlign: "center" }} gutter="16">
-        <FirstTier firstTier={{...firstPrize,...runningNumbers}}/>
+        <FirstTier firstTier={{ ...firstPrize, ...runningNumbers }} />
       </Row>
       <OtherTier otherTier={otherTier} />
     </Card>
@@ -57,29 +59,27 @@ function FirstTier(props) {
   return (
     <>
       {props.firstTier &&
-        (Object.keys(props.firstTier)||[]).map(v=>{
-          return(
+        (Object.keys(props.firstTier) || []).map((v) => {
+          return (
             <Col
-            key={props.firstTier[v].id}
-            style={styles[props.firstTier[v].id].style || {}}
-            span={styles[props.firstTier[v].id].span || 24}
+              key={props.firstTier[v].id}
+              style={styles[props.firstTier[v].id].style || {}}
+              span={styles[props.firstTier[v].id].span || 24}
             >
-              {(props.firstTier[v].number||[]).map(e=>{
-                return(
+              {(props.firstTier[v].number || []).map((e) => {
+                return (
                   <Text type={styles[props.firstTier[v].id].textType}>{e}</Text>
                 );
               })}
-            <Title
-              level={styles[props.firstTier[v].id].titleLevel || 0}
-              style={{ marginTop: "0px" }}
-            >
-              {props.firstTier[v].name}
-            </Title>
+              <Title
+                level={styles[props.firstTier[v].id].titleLevel || 0}
+                style={{ marginTop: "0px" }}
+              >
+                {props.firstTier[v].name}
+              </Title>
             </Col>
-          )
-        })
-         
-      }
+          );
+        })}
     </>
   );
 }
