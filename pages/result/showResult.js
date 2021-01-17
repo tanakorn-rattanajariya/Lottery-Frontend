@@ -26,7 +26,6 @@ const styles = {
 };
 
 export default function ShowResult(props) {
-  console.log(props);
   var firstPrize = (props?.reducer?.lotto.result?.prizes || []).filter((v) =>
     v.id === "prizeFirst").reduce((acc, v) =>{
       return {...acc,[v.id]:v}
@@ -107,5 +106,4 @@ function OtherTier({ otherTier }) {
       </Row>
     );
   });
-  return null;
 }

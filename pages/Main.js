@@ -9,6 +9,7 @@ const mapStateToProps = (state /*, ownProps*/) => {
       component: state.component,
       interact: state.interact,
       lotto: state.lotto,
+      user: state.user
     },
   };
 };
@@ -19,6 +20,8 @@ const mapDispatchToProps = (dispatch) => ({
       dispatch(actions.interact.call(api, doc, item)),
     lotto: (api, doc, item, id, props) =>
       dispatch(actions.lotto.call(api, doc, item, id, props)),
+    user: (api, doc, item, id, props) =>
+      dispatch(actions.user.call(api, doc, item, id, props)),
   },
 });
 function errorMessage(error) {
