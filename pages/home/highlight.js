@@ -9,7 +9,7 @@ const styles = {
 };
 export default function HomeHighlight(props) {
   const { reducer } = props;
-  const { top1 } = reducer.lottery.dashboard;
+  const { top1 } = reducer.lotto.dashboard;
   return (
     <>
       <Card
@@ -26,7 +26,7 @@ export default function HomeHighlight(props) {
 }
 function AIRecommendComponent(props) {
   const { reducer } = props;
-  const { top2, top3, top4,top5 } = reducer.lottery.dashboard;
+  const { top2, top3, top4,top5 } = reducer.lotto.dashboard;
   return (
     <div>
       <span style={styles.aiText} strong>
