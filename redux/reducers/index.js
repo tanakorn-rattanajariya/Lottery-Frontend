@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 import component from "./component";
-import lottery from "./lottery";
+import lotto from "./lotto";
 const reducers = combineReducers({
   component,
-  lottery,
+  lotto,
 });
 
 export default reducers;

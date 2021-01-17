@@ -29,7 +29,7 @@ function Navigator({ router, fullscreen, t, ...props }) {
   }, []);
   return (
     <Layout style={{ height: "100vh" }}>
-      <Header>
+      <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
         <Menu
           onClick={_on_click_menu}
           mode="horizontal"
@@ -44,6 +44,7 @@ function Navigator({ router, fullscreen, t, ...props }) {
         style={{
           height: "100vh",
           backgroundColor: "rgba(var(--b3f,250,250,250),1)",
+          marginTop: 64,
         }}
       >
         <Content>

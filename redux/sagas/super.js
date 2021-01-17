@@ -1,7 +1,7 @@
 import { put, fork, call, take, takeEvery, throttle } from "redux-saga/effects";
 import { COMPONENT, API } from "../actions/type";
 import service from "../services";
-const microService = "ROUTING";
+const microService = "LOTTO";
 
 function* success(data) {
   yield put({
@@ -39,13 +39,13 @@ function* loading(component) {
  **/
 function* get({ uri, doc, id, context }) {
   const _loading = `loading_${uri.replace(/-/g, "_").toLowerCase()}`;
-  const _uri = `/${uri}${context ? context : ""}${id ? `/${id}` : ""}`;
+  const _uri = `${uri}${context ? context : ""}${id ? `/${id}` : ""}`;
   try {
     yield call(loading, _loading);
     let response = yield call(service.get, _uri);
     yield put({
       type: API[microService][doc]["GET"]["SUCCESS"],
-      data: response.data,
+      data: response.data.response || response.data,
     });
     return yield call(complete, _loading);
   } catch (e) {
@@ -68,7 +68,7 @@ function* list({ uri, doc, item, id }) {
     let response = yield call(service.get, _uri, item);
     yield put({
       type: API[microService][doc]["LIST"]["SUCCESS"],
-      data: response.data.results || response.data,
+      data: response.data.response || response.data.results || response.data,
     });
     return yield call(complete, _loading);
   } catch (e) {

@@ -52,6 +52,12 @@ function* get(actions) {
   const { item, doc, id, props } = actions;
   try {
     switch (actions.doc) {
+      case "RESULT":
+        return yield call(_super.get, {
+          uri: `https://lotto.api.rayriffy.com/lotto`,
+          doc,
+          id,
+        });
       default:
         return yield call(_super.get, {
           uri: doc.replace(/_/g, "-").toLowerCase(),
@@ -122,6 +128,13 @@ function* list(actions) {
   try {
     yield call(loading);
     switch (actions.doc) {
+      case "RESULT":
+        return yield call(_super.list, {
+          uri: `https://lotto.api.rayriffy.com/list/1`,
+          item,
+          doc,
+          id,
+        });
       default:
         return yield call(_super.list, {
           uri: `${doc.replace(/_/g, "-").toLowerCase()}`,
@@ -156,7 +169,7 @@ function* loading(component) {
     component,
   });
 }
-export function* deepmap() {
+export function* lotto() {
   yield takeEvery(LOTTERY_REQUEST, request);
   yield debounce(300, LOTTERY_REQUEST_INTERVAL, request);
 }

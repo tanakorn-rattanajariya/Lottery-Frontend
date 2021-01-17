@@ -8,6 +8,8 @@ const styles = {
   },
 };
 export default function HomeHighlight(props) {
+  const { reducer } = props;
+  const { top1 } = reducer.lottery.dashboard;
   return (
     <>
       <Card
@@ -15,24 +17,30 @@ export default function HomeHighlight(props) {
           textAlign: "center",
         }}
       >
-        <Title style={{ fontSize: 90 }}>47</Title>
+        <div style={{ fontSize: 30 }}>เลขเด็ดงวดนี้</div>
+        <div style={{ fontSize: 90, fontWeight: 600 }}>{top1}</div>
         <AIRecommendComponent {...props} />
       </Card>
     </>
   );
 }
 function AIRecommendComponent(props) {
+  const { reducer } = props;
+  const { top2, top3, top4,top5 } = reducer.lottery.dashboard;
   return (
     <div>
-      <Text style={styles.aiText} strong>
-        38
-      </Text>
-      <Text style={styles.aiText} strong>
-        50
-      </Text>
-      <Text style={styles.aiText} strong>
-        62
-      </Text>
+      <span style={styles.aiText} strong>
+        {top2}
+      </span>
+      <span style={styles.aiText} strong>
+        {top3}
+      </span>
+      <span style={styles.aiText} strong>
+        {top4}
+      </span>
+      <span style={styles.aiText} strong>
+        {top5}
+      </span>
     </div>
   );
 }

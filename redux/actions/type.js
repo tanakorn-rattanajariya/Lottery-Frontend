@@ -3,7 +3,7 @@ const APIs = ["LIST", "GET", "POST", "PUT", "DEL", "CLEAR"];
 //TYPES
 const TYPE = ["SUCCESS", "FAIL", "LOADING", "COMPLETE"];
 
-const services = [];
+const services = ["RESULT"];
 const interacts = [];
 function createCRUDE(base, is_interact) {
   return APIs.reduce((acc, type) => {
@@ -28,13 +28,13 @@ function createDoc(base, docs, is_interact) {
   }, {});
 }
 function createAPI(base) {
-  return ["LOTTERY"].reduce((acc, type) => {
+  return ["LOTTO"].reduce((acc, type) => {
     acc[type] = createDoc(`${base}_${type}`, services);
     return acc;
   }, {});
 }
 function createInteract(base) {
-  return ["LOTTERY"].reduce((acc, type) => {
+  return ["LOTTO"].reduce((acc, type) => {
     acc[type] = createDoc(`${base}_${type}`, interacts, true);
     return acc;
   }, {});
