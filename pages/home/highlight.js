@@ -29,18 +29,10 @@ function AIRecommendComponent(props) {
   const { top2, top3, top4, top5 } = reducer.lotto.dashboard;
   return (
     <div>
-      <span style={styles.aiText} strong>
-        {top2}
-      </span>
-      <span style={styles.aiText} strong>
-        {top3}
-      </span>
-      <span style={styles.aiText} strong>
-        {top4}
-      </span>
-      <span style={styles.aiText} strong>
-        {top5}
-      </span>
+      <span style={styles.aiText}>{top2}</span>
+      <span style={styles.aiText}>{top3}</span>
+      <span style={styles.aiText}>{top4}</span>
+      <span style={styles.aiText}>{top5}</span>
     </div>
   );
 }
