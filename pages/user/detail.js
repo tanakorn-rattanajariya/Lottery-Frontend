@@ -19,7 +19,7 @@ export default function UserDetail(props){
                     <Title level={2}>{profile.firstName+' '+profile.lastName}</Title>
                     <Card style={{textAlign:'left'}}>
                         <div style={{position:'absolute',top:'2%',right:'5%'}}>
-                            <Button style={{backgroundColor:"initial"}} type="text" icon={<BellOutlined />}/>
+                            <Button style={{backgroundColor:"initial",padding:'0px'}} type="text" icon={<BellOutlined />}/>
                         </div>
                         <div>
                             <Text><MobileOutlined style={{padding:'6px'}}/>{profile.homePhone}</Text>

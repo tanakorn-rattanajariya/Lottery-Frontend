@@ -10,7 +10,7 @@ export default function UserFeed(props){
             {feedList.map(v=>{
                 return(
                     <Card>
-                       <FeedDetail item={v} {...props}/>
+                       <FeedDetail item={v} user={props?.reducer.user?.profile}/>
                        <InteractionDetail item={v}/>
                     </Card>
                 )
@@ -20,7 +20,6 @@ export default function UserFeed(props){
 }
 
 function FeedDetail(props){
-    const profile =props?.reducer.user?.profile;
     return(
         <>
              <div style={{display:"inline-block"}}>
@@ -30,14 +29,14 @@ function FeedDetail(props){
                 />
             </div>
                         
-            <span style={{display:"inline-block"}}>
-                <Title level={5}>{profile.firstName+' '+profile.lastName}</Title>
+            <div style={{display:"inline-block"}}>
+                <Title level={5}>{props?.user.firstName+' '+props?.user.lastName}</Title>
                 <Text>{props?.item.date}</Text>
-            </span>
+            </div>
             <div style={{textAlign: 'center',margin:'12px'}}>{props?.item.image && <Image src={props?.item.image} width={300} />}</div>
             <div>
                 <Text><div dangerouslySetInnerHTML={{ __html: props?.item.text||'' }} /></Text>
-            </div>
+            </div>    
         </>
     )
 }
@@ -61,6 +60,30 @@ function InteractionDetail(props){
                 <Col><Button style={{backgroundColor:"initial"}} type="text" icon={<CommentOutlined />}>Comment</Button></Col>
                 <Col><Button style={{backgroundColor:"initial"}} type="text" icon={<ShareAltOutlined />}>Share</Button></Col>
             </Row>
+            {(props?.item.comments||[]).map(v=>{
+                return(
+                    <div style={{margin:'12px'}}>
+                        <div style={{display:"inline-block", margin:'6px'}}>
+                            <Button type="text" style={{backgroundColor:"initial",padding:'0px'}}>
+                                <Avatar
+                                    size={30}
+                                    src="https://static.dw.com/image/47715732_303.jpg"
+                                />
+                           </Button>  
+                        </div>
+                        <div style={{display:"inline-block"}}>
+                            <div style={{borderRadius:'18px',backgroundColor:'#f0f2f5',padding:"8px"}}>
+                                <Button type="text" style={{backgroundColor:"initial",padding:'0px'}}>
+                                    <Title level={5}>{v.commenter.firstName+' '+v.commenter.lastName}</Title>
+                                </Button>
+                                <Text><div dangerouslySetInnerHTML={{ __html: v.text||'' }} /></Text>
+                            </div>
+                            <div style={{margin:'12px'}}>{v.image && <Image src={v.image} width={180} />}</div>
+                        </div>
+                    </div>
+                )
+            })}
+           
         </div>
     )
 }

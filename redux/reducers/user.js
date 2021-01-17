@@ -6,7 +6,7 @@ const initialState = {
     lastName:'ทดสอบ',
     homePhone:'021111111',
     mobilePhone:'0999999999',
-    description:'มือหวยขั้นเทพ มาพร้อมสถิติถูก 50 % กด Subscribe ให้ด้วยนะจ๊ะ',
+    description:'มือหวยขั้นเทพ มาพร้อมสถิติถูก 50 % กดกระดิ่งให้พ่อหมอกันด้วยนะจ๊ะ',
     address: 'บ้านพ่อหมอยูเซอร์ทดสอบ ต.ในเมือง อ.เมือง จ.บุรีรัมย์'
   },
   feedList:[
@@ -18,7 +18,7 @@ const initialState = {
       comments:[
         {
           commenter:{firstName:'Pug',lastName:'Snow'},
-          image:'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thairath.co.th%2Fnews%2Flocal%2Fnortheast%2F1750035&psig=AOvVaw24xOTCppqfzsiEGr1Eim7p&ust=1610976907684000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPjP1viKo-4CFQAAAAAdAAAAABAD',
+          image:'https://s.isanook.com/ns/0/rp/r/w728/ya0xa0m1w0/aHR0cHM6Ly9zLmlzYW5vb2suY29tL25zLzAvdWQvMTYwMi84MDEzNjk0L2xvdHRvLmpwZw==.jpg',
           text:'ตามเลยแล้วกัน',
           date:'17 มกราคม เวลา 17:30 น.',
           like:99}
