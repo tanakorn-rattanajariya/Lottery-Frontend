@@ -1,23 +1,36 @@
-import { Card, Col, Typography, Tabs, Affix } from "antd";
+import { Card, Col, Typography, Tabs, Affix, Skeleton } from "antd";
 const { Title, Text } = Typography;
 const { TabPane } = Tabs;
 import Router from "next/router";
-
+import ResultShowResult from "./showResult";
 export default function ResultPeriod(props) {
-  const _on_click_each_period = (e) => {
-    Router.push({
-      pathname: "/result",
-      query: { period: e },
-    });
+  const { setCurrent } = props;
+  const { results } = props.reducer.lotto;
+  const { loading_results } = props.reducer.component;
+  const onChageTab = (e) => {
+    setCurrent(e);
   };
-  const { results } = props?.reducer?.lotto;
   return (
     <Affix offsetTop={65}>
       <Card>
-        <Title level={2}>ผลสลากย้อนหลัง</Title>
-        <Tabs defaultActiveKey="1">
+        <Tabs onChange={onChageTab} defaultActiveKey="1">
           {(results || []).map((v, i) => {
-            return <TabPane tab={v.date} key={i}></TabPane>;
+            return (
+              <TabPane
+                tab={
+                  loading_results ? (
+                    <Skeleton.Button
+                      size="small"
+                      style={{ width: 100 }}
+                      active={true}
+                    />
+                  ) : (
+                    v.date
+                  )
+                }
+                key={v.id}
+              ></TabPane>
+            );
           })}
         </Tabs>
       </Card>

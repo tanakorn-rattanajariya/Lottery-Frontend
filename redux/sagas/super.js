@@ -38,7 +38,10 @@ function* loading(component) {
  * @param context additional text in service
  **/
 function* get({ uri, doc, id, context }) {
-  const _loading = `loading_${uri.replace(/-/g, "_").toLowerCase()}`;
+  const _loading = `loading_${doc
+    .toLowerCase()
+    .replace(/-/g, "_")
+    .toLowerCase()}`;
   const _uri = `${uri}${context ? context : ""}${id ? `/${id}` : ""}`;
   try {
     yield call(loading, _loading);
@@ -61,7 +64,10 @@ function* get({ uri, doc, id, context }) {
  * @param item payload in project
  **/
 function* list({ uri, doc, item, id }) {
-  const _loading = `loading_${uri.replace(/-/g, "_").toLowerCase()}`;
+  const _loading = `loading_${doc
+    .toLowerCase()
+    .replace(/-/g, "_")
+    .toLowerCase()}s`;
   const _uri = `${uri}${id ? `/${id}` : ""}`;
   try {
     yield call(loading, _loading);
@@ -87,7 +93,10 @@ function* list({ uri, doc, item, id }) {
  * @param isback boolean checking that post function is not back
  **/
 function* post({ uri, doc, item, id, isback = true }) {
-  const _loading = `loading_${uri.replace(/-/g, "_").toLowerCase()}`;
+  const _loading = `loading_${doc
+    .toLowerCase()
+    .replace(/-/g, "_")
+    .toLowerCase()}`;
   const _uri = `${uri}${id ? `/${id}` : ""}`;
   try {
     yield call(loading, _loading);
@@ -118,7 +127,10 @@ function* post({ uri, doc, item, id, isback = true }) {
  * @param context additional text in service
  **/
 function* update({ uri, doc, item, id, context, props = {} }) {
-  const _loading = `loading_${uri.replace(/-/g, "_").toLowerCase()}`;
+  const _loading = `loading_${doc
+    .toLowerCase()
+    .replace(/-/g, "_")
+    .toLowerCase()}`;
   const _uri = `${uri}${context ? context : ""}${id ? `/${id}` : ""}`;
   try {
     yield call(loading, _loading);
@@ -143,7 +155,10 @@ function* update({ uri, doc, item, id, context, props = {} }) {
  * @param context additional text in service
  **/
 function* del({ doc, uri, id, context }) {
-  const _loading = `loading_${uri.replace(/-/g, "_").toLowerCase()}`;
+  const _loading = `loading_${doc
+    .toLowerCase()
+    .replace(/-/g, "_")
+    .toLowerCase()}`;
   const _uri = `${uri}${context ? context : ""}${id ? `/${id}` : ""}`;
   try {
     yield call(loading, _loading);

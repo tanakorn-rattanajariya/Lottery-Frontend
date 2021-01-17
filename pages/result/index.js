@@ -5,20 +5,45 @@ import ResultShowResult from "./showResult";
 import { useRouter } from "next/router";
 
 export default function ResultPage(props) {
+  /**
+   * @desc current period
+   */
+  const [current, setCurrent] = React.useState();
   return (
     <Main>
-      <ComponentDidMount />
-      <MainComponent />
+      <ComponentDidMount current={current} setCurrent={setCurrent} />
+      <MainComponent setCurrent={setCurrent} />
     </Main>
   );
 }
 
-function ComponentDidMount({ action }) {
+function ComponentDidMount({ action, current, reducer, setCurrent }) {
   var params = useRouter();
+  const { results } = reducer.lotto;
+  /**
+   * @desc initial state
+   */
   React.useEffect(() => {
-    action.lotto("GET", "RESULT", {}, params.query?.period || "17012564");
     action.lotto("LIST", "RESULT");
   }, []);
+  /**
+   * @desc get current period from results
+   * @param { [{id,key,url,date}] } results
+   */
+  React.useEffect(() => {
+    if ((results || []).length > 0) {
+      setCurrent(results.last().id);
+    }
+  }, [results]);
+  /**
+   * @desc hadler when current period change
+   * @param { id } current
+   */
+  React.useEffect(() => {
+    if (current) {
+      action.lotto("GET", "RESULT", {}, current);
+    }
+  }, [current]);
   return <></>;
 }
 function MainComponent(props) {

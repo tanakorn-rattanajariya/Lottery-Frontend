@@ -1,4 +1,4 @@
-import { Row, Col, Card, Typography, Divider, List } from "antd";
+import { Row, Col, Card, Typography, Divider, Spin } from "antd";
 const { Title, Text } = Typography;
 
 const styles = {
@@ -26,6 +26,7 @@ const styles = {
 };
 
 export default function ResultShowResult(props) {
+  const { loading_result } = props.reducer.component;
   var firstPrize = (props?.reducer?.lotto.result?.prizes || [])
     .filter((v) => v.id === "prizeFirst")
     .reduce((acc, v) => {
@@ -46,11 +47,17 @@ export default function ResultShowResult(props) {
     return { ...(acc || {}), [v.id]: { ...v } };
   }, {});
   return (
-    <Card style={{ marginBottom: "12px" }}>
-      <Row style={{ textAlign: "center" }} gutter="16">
-        <FirstTier firstTier={{ ...firstPrize, ...runningNumbers }} />
-      </Row>
-      <OtherTier otherTier={otherTier} />
+    <Card style={{ marginTop: 16 }}>
+      {loading_result ? (
+        <Spin style={{ display: "block", margin: "auto" }} />
+      ) : (
+        <>
+          <Row style={{ textAlign: "center" }} gutter="16">
+            <FirstTier firstTier={{ ...firstPrize, ...runningNumbers }} />
+          </Row>
+          <OtherTier otherTier={otherTier} />
+        </>
+      )}
     </Card>
   );
 }
@@ -59,16 +66,18 @@ function FirstTier(props) {
   return (
     <>
       {props.firstTier &&
-        (Object.keys(props.firstTier) || []).map((v) => {
+        (Object.keys(props.firstTier) || []).map((v, i) => {
           return (
             <Col
-              key={props.firstTier[v].id}
+              key={i}
               style={styles[props.firstTier[v].id].style || {}}
               span={styles[props.firstTier[v].id].span || 24}
             >
-              {(props.firstTier[v].number || []).map((e) => {
+              {(props.firstTier[v].number || []).map((e, i) => {
                 return (
-                  <Text type={styles[props.firstTier[v].id].textType}>{e}</Text>
+                  <Text key={i} type={styles[props.firstTier[v].id].textType}>
+                    {e}
+                  </Text>
                 );
               })}
               <Title
