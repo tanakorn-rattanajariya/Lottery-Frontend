@@ -28,7 +28,7 @@ export default function HomeInfo(props) {
         <Row style={{ marginTop: 48 }} gutter={8}>
           <Col xs={{ span: 0 }} sm={{ span: 3 }}></Col>
           <Col xs={{ span: 0 }} sm={{ span: 18 }}>
-            <Row gutter={36}>
+            <Row gutter={48}>
               {(data || []).map((v) => (
                 <InfoComponent key={v.title} item={v} />
               ))}
@@ -44,7 +44,7 @@ export default function HomeInfo(props) {
 function InfoComponent({ item }) {
   return (
     <Col xs={{ span: 24 }} sm={{ span: 8 }}>
-      <Avatar size={120}>
+      <Avatar size={100}>
         <img src={imgServer} style={{ width: 60, height: 60 }}></img>
       </Avatar>
       <Title style={{ marginTop: 24 }} level={4}>
