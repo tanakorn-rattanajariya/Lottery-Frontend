@@ -1,6 +1,6 @@
 import React from "react";
 import { List, Avatar, Row, Col, Button } from "antd";
-import { LikeOutlined } from "@ant-design/icons";
+import { LikeOutlined, EyeOutlined } from "@ant-design/icons";
 export default function HomeTopPredict(props) {
   const data = [
     {
@@ -37,9 +37,13 @@ export default function HomeTopPredict(props) {
                         "Ant Design, a design language for background applications, is refined by Ant UED Team"
                       }
                     </div>
-                    <a>
-                      <LikeOutlined style={{ marginRight: 4 }} />
+                    <a style={{ marginRight: 12 }}>
+                      <LikeOutlined style={{ marginRight: 8 }} />
                       157
+                    </a>
+                    <a>
+                      <EyeOutlined style={{ marginRight: 8 }} />
+                      56,292
                     </a>
                   </>
                 }
