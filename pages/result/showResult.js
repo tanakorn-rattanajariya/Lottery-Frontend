@@ -34,7 +34,6 @@ export default function ResultShowResult(props) {
     }, {});
   var otherTier = (props?.reducer?.lotto.result?.prizes || [])
     .filter((v) => v.id !== "prizeFirst")
-    .sort((a, b) => a.amount - b.amount)
     .reduce((acc, v) => {
       return {
         ...acc,
@@ -62,29 +61,35 @@ export default function ResultShowResult(props) {
   );
 }
 
-function FirstTier(props) {
+function FirstTier({firstTier}) {
   return (
     <>
-      {props.firstTier &&
-        (Object.keys(props.firstTier) || []).map((v, i) => {
+      {firstTier &&
+        (Object.keys(firstTier) || [])
+        .sort((a, b) => firstTier[a].amount - firstTier[b].amount)
+        .map((v, i) => {
           return (
             <Col
               key={i}
-              style={styles[props.firstTier[v].id].style || {}}
-              span={styles[props.firstTier[v].id].span || 24}
+              style={styles[firstTier[v].id].style || {}}
+              span={styles[firstTier[v].id].span || 24}
             >
-              {(props.firstTier[v].number || []).map((e, i) => {
-                return (
-                  <Text key={i} type={styles[props.firstTier[v].id].textType}>
-                    {e}
-                  </Text>
-                );
-              })}
+              <Row key={i} justify='center' gutter={12}>
+                {(firstTier[v].number || []).map((e, i) => {
+                  return (
+                      <Col xs={12} sm={8} lg={5} >
+                        <Text type={styles[firstTier[v].id].textType}>
+                          {e}
+                        </Text>
+                      </Col>
+                  );
+                })}
+              </Row>
               <Title
-                level={styles[props.firstTier[v].id].titleLevel || 0}
+                level={styles[firstTier[v].id].titleLevel || 0}
                 style={{ marginTop: "0px" }}
               >
-                {props.firstTier[v].name}
+                {firstTier[v].name}
               </Title>
             </Col>
           );
@@ -109,12 +114,11 @@ function OtherTier({ otherTier }) {
           </Title>
         </Col>
         {(otherTier[v]?.number || []).map((e) => (
-          <Col key={e} span={4}>
+          <Col key={e} xs={8} sm={6} lg={4}>
             {e}
           </Col>
         ))}
       </Row>
     );
   });
-  return null;
 }

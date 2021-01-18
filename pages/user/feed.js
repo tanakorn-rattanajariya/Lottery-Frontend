@@ -9,7 +9,7 @@ export default function UserFeed(props){
         <> 
             {feedList.map(v=>{
                 return(
-                    <Card>
+                    <Card key={v.id}>
                        <FeedDetail item={v} user={props?.reducer.user?.profile}/>
                        <InteractionDetail item={v}/>
                     </Card>
@@ -19,7 +19,7 @@ export default function UserFeed(props){
     )
 }
 
-function FeedDetail(props){
+function FeedDetail({item,user}){
     return(
         <>
              <div style={{display:"inline-block"}}>
@@ -30,28 +30,28 @@ function FeedDetail(props){
             </div>
                         
             <div style={{display:"inline-block"}}>
-                <Title level={5}>{props?.user.firstName+' '+props?.user.lastName}</Title>
-                <Text>{props?.item.date}</Text>
+                <Title level={5}>{user.firstName+' '+user.lastName}</Title>
+                <Text>{item.date}</Text>
             </div>
-            <div style={{textAlign: 'center',margin:'12px'}}>{props?.item.image && <Image src={props?.item.image} width={300} />}</div>
+            <div style={{textAlign: 'center',margin:'12px'}}>{item.image && <Image src={item.image} width={300} />}</div>
             <div>
-                <Text><div dangerouslySetInnerHTML={{ __html: props?.item.text||'' }} /></Text>
+                <Text><div dangerouslySetInnerHTML={{ __html: item.text||'' }} /></Text>
             </div>    
         </>
     )
 }
 
-function InteractionDetail(props){
+function InteractionDetail({item}){
     return(
         <div style={{marginTop:'6px'}}>
             <Row>
                 <Col span={12}>
                     <LikeOutlined />
-                    <Text style={{marginLeft:'4px'}}>{props?.item.like}</Text>
+                    <Text style={{marginLeft:'4px'}}>{item.like}</Text>
                 </Col>
                 <Col span={12} style={{textAlign:'right'}}>
-                    <Text>Comment {props?.item.comments?.length}</Text>
-                    <Text style={{marginLeft:'6px'}}>Share {props?.item.share}</Text>
+                    <Text>Comment {item.comments?.length}</Text>
+                    <Text style={{marginLeft:'6px'}}>Share {item.share}</Text>
                 </Col>
             </Row>
             <Divider style={{margin:'12px 0'}} />
@@ -60,9 +60,9 @@ function InteractionDetail(props){
                 <Col><Button style={{backgroundColor:"initial"}} type="text" icon={<CommentOutlined />}>Comment</Button></Col>
                 <Col><Button style={{backgroundColor:"initial"}} type="text" icon={<ShareAltOutlined />}>Share</Button></Col>
             </Row>
-            {(props?.item.comments||[]).map(v=>{
+            {(item.comments||[]).map(v=>{
                 return(
-                    <div style={{margin:'12px'}}>
+                    <div style={{margin:'12px'}} key={v.id}>
                         <div style={{display:"inline-block", margin:'6px'}}>
                             <Button type="text" style={{backgroundColor:"initial",padding:'0px'}}>
                                 <Avatar

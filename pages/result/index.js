@@ -2,6 +2,7 @@ import React from "react";
 import Main from "../Main";
 import ResultPeriod from "./period";
 import ResultShowResult from "./showResult";
+import SearchResult from './search';
 import { useRouter } from "next/router";
 
 export default function ResultPage(props) {
@@ -50,6 +51,7 @@ function MainComponent(props) {
   return (
     <>
       <ResultPeriod {...props} />
+      <SearchResult {...props} />
       <ResultShowResult {...props} />
     </>
   );
