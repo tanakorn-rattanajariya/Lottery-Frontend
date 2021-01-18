@@ -7,7 +7,6 @@ export default function SearchResult(props) {
   const { result } = props?.reducer.lotto;
   const [winningPrizes, setWinningPrizes] = React.useState();
   const [winningRunning, setWinningRunning] = React.useState();
-  console.log(winningRunning);
   const checkResult = (value) => {
     setWinningPrizes(setWinningPrize(result, value));
     setWinningRunning(
@@ -64,7 +63,6 @@ export default function SearchResult(props) {
               );
             })}
             {Object.keys(winningRunning).map((v) => {
-              console.log(v);
               return (
                 <div key={v}>
                   <Text>{winningRunning[v].id}</Text>

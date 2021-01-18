@@ -12,4 +12,18 @@ function setWinningPrize(result, value) {
     }, {});
 }
 
-export { setWinningPrize };
+function setResultEqual(result,field, value) {
+  return (result?.[field] || [])
+    .filter((v) => v.id === value)
+    .reduce((acc, v) => {
+      return {...acc, [v.id]: v };
+    }, {});
+}
+function setResultNotEqual(result,field, value) {
+  return (result?.[field] || [])
+  .filter((v) => v.id !== value)
+  .reduce((acc, v) => {
+    return {...acc, [v.id]: v };
+  }, {});
+}
+export { setWinningPrize,setResultEqual,setResultNotEqual };

@@ -1,4 +1,5 @@
 import { Row, Col, Card, Typography, Divider, Spin } from "antd";
+import { setResultEqual,setResultNotEqual } from "logics/lotto";
 const { Title, Text } = Typography;
 
 const styles = {
@@ -27,24 +28,10 @@ const styles = {
 
 export default function ResultShowResult(props) {
   const { loading_result } = props.reducer.component;
-  var firstPrize = (props?.reducer?.lotto.result?.prizes || [])
-    .filter((v) => v.id === "prizeFirst")
-    .reduce((acc, v) => {
-      return { ...acc, [v.id]: v };
-    }, {});
-  var otherTier = (props?.reducer?.lotto.result?.prizes || [])
-    .filter((v) => v.id !== "prizeFirst")
-    .reduce((acc, v) => {
-      return {
-        ...acc,
-        [v.id]: v,
-      };
-    }, {});
-  var runningNumbers = (
-    props?.reducer.lotto.result?.runningNumbers || []
-  ).reduce((acc, v) => {
-    return { ...(acc || {}), [v.id]: { ...v } };
-  }, {});
+  const {result} = props?.reducer?.lotto;
+  var firstPrize = setResultEqual(result,"prizes", "prizeFirst");
+  var otherTier = setResultNotEqual(result,"prizes", "prizeFirst");
+  var runningNumbers = setResultNotEqual(result,"runningNumbers",null);
   return (
     <Card style={{ marginTop: 16 }}>
       {loading_result ? (
@@ -70,14 +57,14 @@ function FirstTier({firstTier}) {
         .map((v, i) => {
           return (
             <Col
-              key={i}
+              key={v}
               style={styles[firstTier[v].id].style || {}}
               span={styles[firstTier[v].id].span || 24}
             >
               <Row key={i} justify='center' gutter={12}>
                 {(firstTier[v].number || []).map((e, i) => {
                   return (
-                      <Col xs={12} sm={8} lg={5} >
+                      <Col key={e} xs={12} sm={8} lg={5} >
                         <Text type={styles[firstTier[v].id].textType}>
                           {e}
                         </Text>

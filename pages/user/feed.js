@@ -20,9 +20,9 @@ export default function UserFeed(props) {
 
   return (
     <>
-      {feedList.map((v) => {
+      {feedList.map((v,i) => {
         return (
-          <Card style={{ marginBottom: 16 }}>
+          <Card key={i} style={{ marginBottom: 16 }}>
             <FeedDetail item={v} user={props?.reducer.user?.profile} />
             <InteractionDetail item={v} />
           </Card>
@@ -103,9 +103,9 @@ function InteractionDetail(props) {
           </Button>
         </Col>
       </Row>
-      {(props?.item.comments || []).map((v) => {
+      {(props?.item.comments || []).map((v,i) => {
         return (
-          <div style={{ margin: "12px" }}>
+          <div key={i} style={{ margin: "12px" }}>
             <div style={{ display: "inline-block", margin: "6px" }}>
               <Button
                 type="text"
