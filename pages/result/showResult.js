@@ -34,6 +34,9 @@ export default function ResultShowResult(props) {
   var runningNumbers = setResultNotEqual(result,"runningNumbers",null);
   return (
     <Card style={{ marginTop: 16 }}>
+      
+      <Random1/>
+      <Random2/>
       {loading_result ? (
         <Spin style={{ display: "block", margin: "auto" }} />
       ) : (
@@ -108,4 +111,27 @@ function OtherTier({ otherTier }) {
       </Row>
     );
   });
+}
+
+
+function Random1(){
+  var numbers = {};
+  for(var i =0;i<9999;i++){
+    var num =Math.floor(Math.random() * 100);
+    numbers[num] = (numbers[num] || 0)+1;
+  }
+  const mostFrequent = Object.keys(numbers).sort((a,b)=>numbers[b]-numbers[a])[0];
+  return(<Title>1 prediction number  {mostFrequent}</Title>)
+}
+
+function Random2(){
+  var numbers = {};
+  for(var i =0;i<9999;i++){
+    var first =Math.floor(Math.random() * 10);
+    var second = Math.floor(Math.random() * 10);
+    var sumString = first.toString() + second.toString();
+    numbers[sumString] = (numbers[sumString] || 0)+1;
+  }
+  const mostFrequent = Object.keys(numbers).sort((a,b)=>numbers[b]-numbers[a])[0];
+  return(<Title>2 prediction number  {mostFrequent}</Title>)
 }
