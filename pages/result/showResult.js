@@ -116,7 +116,7 @@ function OtherTier({ otherTier }) {
 
 function Random1(){
   var numbers = {};
-  for(var i =0;i<9999;i++){
+  for(var i =0;i<1000000;i++){
     var num =Math.floor(Math.random() * 100);
     numbers[num] = (numbers[num] || 0)+1;
   }
@@ -126,7 +126,7 @@ function Random1(){
 
 function Random2(){
   var numbers = {};
-  for(var i =0;i<9999;i++){
+  for(var i =0;i<1000000;i++){
     var first =Math.floor(Math.random() * 10);
     var second = Math.floor(Math.random() * 10);
     var sumString = first.toString() + second.toString();
